@@ -1,0 +1,87 @@
+.choices{
+    padding-left: 45px;
+}
+.ant-input input-box{
+    border-radius:8px;
+}
+.question-input{
+     padding-left: 20px;
+}
+
+
+/* More Choices */
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+  .form-inline {  
+    display: flex;
+    width: 85%;
+    padding-left: 5px;
+  }
+
+  .form-inline label {
+    margin: 5px 5px 5px 0;
+  }
+
+  .form-inline input {
+   margin-left: 33px;
+   margin-top: 10px;
+   margin-bottom: 10px;
+   margin-right: 10px;
+    padding: 5px;
+  }
+.button{
+    margin:5%;
+   }
+  .remove {
+    margin: 13px 10px 15px 0;
+    background-color: #d11141;
+    color:white;
+    font-size: medium;
+    border-radius: 5px;
+    border:none;
+  }
+
+  .remove:hover {
+    background-color: #ed0b0e;
+  }
+  .drag {
+      display: flex;
+      width: 83%;
+      margin: 5px 5px 5px 0;
+     }
+
+    .drag input{
+        margin: 13px 0px 15px 22px;
+        padding: 5px; 
+    }
+
+    .drag-icon{
+        margin: 13px 15px 15px 10px;
+        cursor: grab;  
+       }
+       .drag-icontwo{
+        margin: 13px 0px 15px 11px;
+        cursor: grab;
+
+       }
+
+  
+       /* CollapseDropDown */
+
+
+    #collapse{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.tooltip{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.info{
+    font-size: 12px;
+    font-weight: 10%;
+}
+.info-radio{
+    font-size: 13px;
+}
