@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import {Button} from 'antd';
 import 'antd/dist/antd.css';
 import './App.css';
-import {DragOutlined, DeleteOutlined} from '@ant-design/icons';
-import { defaultTheme, OrderGroup, OrderItem, arrayMove } from 'react-draggable-order';
-
+import { DeleteOutlined} from '@ant-design/icons';
 
 
 const MoreChoices = () => {
@@ -30,21 +28,10 @@ const MoreChoices = () => {
         alert(JSON.stringify(formValues));
     }
      
-    const [list, setList] = useState([{addFormFields}]);
-
 
     return (
       <div>
         <form  onSubmit={handleSubmit}>
-          <OrderGroup {...defaultTheme.group} style={{width: '500px', maxWidth: '70vw'}}>
-      {list.map((x, i) => (
-        <OrderItem key={i}
-                   onMove={(to) => setList(arrayMove(list, i, to))}
-                   {...defaultTheme.item}
-        >
-          <OrderItem.Handle {...defaultTheme.handle}>
-          <span className="drag-icontwo"><DragOutlined/></span>
-            </OrderItem.Handle>
            {formValues.map((element, index) => (
                       
                  <div className="form-inline" key={index}>
@@ -59,12 +46,6 @@ const MoreChoices = () => {
               </div>
               </div>
               ))}
-          <div {...defaultTheme.content}>
-            {x}
-          </div>
-        </OrderItem>
-      ))}
-    </OrderGroup>
           
           <div className="button-section">
               <Button className="button add" type="primary" onClick={() => addFormFields()}>More Choices</Button>

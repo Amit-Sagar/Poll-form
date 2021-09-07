@@ -3,6 +3,30 @@ import { Button, Modal, Form, Input, } from 'antd';
 import CollapseDropDown from './CollapseDropDown';
 import './App.css';
 import MoreChoices from './MoreChoices';
+// import axios from 'axios';
+
+// const axios = require('axios');
+
+// axios.get('https://dev.techtud.oslabs.app/api/v1.1/create_poll')
+//   .then(function (response) {
+//     console.log(response);
+//   })
+//   .catch(function (error) {
+//     console.log(error);
+//   })
+//   .then(function () {
+//   });
+
+
+//   async function getQuestion() {
+//     try {
+//       const response = await axios.get('/user?ID=12345');
+//       console.log(response);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   }
+
 
 
  const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
@@ -46,7 +70,7 @@ import MoreChoices from './MoreChoices';
             },
           ]}
         ><div className="question-input">        
-              <Input  style={{width:'90%'}}/>
+              <Input style={{width:'90%'}}/>
         </div>
         </Form.Item>
         <Form.Item name="Choices" label="Choices">
