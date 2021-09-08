@@ -1,57 +1,41 @@
-import React, { useState } from 'react';
-import {Button, Form} from 'antd';
-import 'antd/dist/antd.css';
-import './App.css';
-import { DeleteOutlined} from '@ant-design/icons';
-
+import { Form, Input, Button, Space } from 'antd';
+import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
 const MoreChoices = () => {
 
-    const [formValues, setFormValues] = useState([{ morechoices: ""}])
- 
-    let handleChange = (i, e) => {
-        let newFormValues = [...formValues];
-        newFormValues[i][e.target.name] = e.target.value;
-        setFormValues(newFormValues);
-      }
-    
-    let addFormFields = () => {
-        setFormValues([...formValues, { morechoices: "" }])
-      }
-      let removeFormFields = (i) => {
-        let newFormValues = [...formValues];
-        newFormValues.splice(i, 1);
-        setFormValues(newFormValues)
-    }
-    let handleSubmit = (event) => {
-        event.preventDefault();
-        alert(JSON.stringify(formValues));
-    }
-     
+  return (
+      <Form.List name="choices" label="Choices">
+        {(fields, { add, remove }) => (
+           <>
+           <Form.Item style={{paddingLeft: '90px'}}>
+                <Input style={{ width : '70%'}}/>
+                </Form.Item>
+                <Form.Item style={{paddingLeft: '90px'}}>
+                <Input style={{ width : '70%'}}/>
+                </Form.Item>
+            {fields.map(({ key, name, fieldKey, ...restField }) => (
+              <Space key={key} style={{ display: 'flex', marginBottom: 8}} align="baseline">
+                <Form.Item
+                  {...restField}
+                  name={[name, 'first']}
+                  fieldKey={[fieldKey, 'first']}
+                  style={{paddingLeft: '90px'}}
+                >
+                  <Input style={{width:'80%'}}/>
+                </Form.Item>
+                <MinusCircleOutlined onClick={() => remove(name)} />
+              </Space>
+            ))}
+            <Form.Item>
 
-    return (
-      <Form.Item name="Choices" label="Choices">
-        <form  onSubmit={handleSubmit}>
-           {formValues.map((element, index) => (
-                      
-                 <div className="form-inline" key={index}>
-                     
-                <input className="ant-input input-box" type="text" name="morechoices" value={element.morechoices || ""} onChange={e => handleChange(index, e)} />
-                 <div>
-                {
-                  index ? 
-                    <button type="button"  className="remove" onClick={() => removeFormFields(index)}><span className="button-name"><DeleteOutlined style={{padding:'2px 2px 2px 2px'}} /></span></button> 
-                  : null
-                }
-              </div>
-              </div>
-              ))}
-          
-          <div className="button-section">
-              <Button className="button add" type="primary" onClick={() => addFormFields()}>More Choices</Button>
-             
-          </div>
-      </form>
-      </Form.Item>    )
-}
+
+              <Button type="primary" onClick={() => add()} icon={<PlusOutlined />}>
+                More Choices
+              </Button>
+            </Form.Item>
+          </>
+        )}
+      </Form.List>
+  );
+};
 export default MoreChoices;

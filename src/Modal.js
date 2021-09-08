@@ -49,6 +49,9 @@ import MoreChoices from './MoreChoices';
               <Input style={{width:'90%'}}/>
         </div>
         </Form.Item>
+        <Form.Item>
+          <p>Choices</p>
+          </Form.Item>
            <MoreChoices/>
            <CollapseDropDown/>
       </Form>
