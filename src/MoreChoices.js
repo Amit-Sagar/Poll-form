@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Button} from 'antd';
+import {Button, Form} from 'antd';
 import 'antd/dist/antd.css';
 import './App.css';
 import { DeleteOutlined} from '@ant-design/icons';
@@ -30,7 +30,7 @@ const MoreChoices = () => {
      
 
     return (
-      <div>
+      <Form.Item name="Choices" label="Choices">
         <form  onSubmit={handleSubmit}>
            {formValues.map((element, index) => (
                       
@@ -52,7 +52,6 @@ const MoreChoices = () => {
              
           </div>
       </form>
-      </div>
-    )
+      </Form.Item>    )
 }
 export default MoreChoices;

@@ -4,6 +4,18 @@ import {Button} from 'antd';
 import 'antd/dist/antd.css';
 import './App.css';
 import { DeleteOutlined} from '@ant-design/icons';
+import axios from 'axios';
+
+
+          axios.post('https://dev.techtud.oslabs.app/api/v1.1/create_poll')
+            .then(function (response) {
+              console.log(response);
+            })
+            .catch(function (error) {
+              console.log(error);
+            })
+            .then(function () {
+            });
 
 
 
