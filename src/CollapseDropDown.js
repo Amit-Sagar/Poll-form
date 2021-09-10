@@ -1,6 +1,7 @@
 import React from 'react'
-import {Collapse, Radio, Space, Tooltip,Form, Select} from 'antd';
+import {Collapse, Radio, Space,Form, Select,} from 'antd';
 import './App.css';
+import { InfoCircleOutlined } from "@ant-design/icons";
 
 
 class RadioOption extends React.Component {
@@ -18,39 +19,51 @@ class RadioOption extends React.Component {
   render() {
     const { value } = this.state;
     return (
-      <Form.Item name="modifier" >
-      <div>
-        <p>Poll Status</p>
+      <Form.Item name="modifier" label="Poll Status" 
+      tooltip={{ title: 'When a poll is closed, visitors can no longer vote for it.', icon: <InfoCircleOutlined /> }}
+      >
       <Radio.Group onChange={this.onChange} value={value}>
         <Space direction="vertical">
           <Radio value={1}><span className="info-radio">Closed</span></Radio>
           <Radio value={2}><span className="info-radio">Active</span></Radio>
         </Space>
       </Radio.Group>
-          <div className="tooltip">
-              <Tooltip title="When a poll is closed, visitors can no longer vote for it.">
-                 <span className="info"><u>More Information?</u></span>
-              </Tooltip>
-           </div>
-          </div>
            
       </Form.Item>
     );
   }
 };
  const PollDuration = () => {
+
+  function onChange(value) {
+    console.log(`selected ${value}`);
+  }
+  
   return (
-      <Form.Item name="poll-duration" label="Poll duration"  className="collection-create-form_last-form-item">
+      <Form.Item name="poll-duration" label="Poll duration"
+      tooltip={{ title: 'After this period,the poll will be closed automatically.', icon: <InfoCircleOutlined /> }}
+      >
            <Select
           placeholder="Unlimited"
-          options={[{ value: 'Unlimited' },{ value: '1 day' }, { value: '2 days' },{ value: '3 days' },{ value: '4 days' },{ value: '5 days' },{ value: '6 days' },{ value: '1week ' },{ value: '2 weeks' },{ value: '3 weeks' },{ value: '1 month' },
-          { value: '2 months' },{ value: '3 months' },{ value: '6 months' },{ value: '9 months' },{ value: '1 year' },]}
-        />
-                   <div className="tooltip">
-           <Tooltip title="After this period the poll will be closed automatically.">
-                 <span className="info"><u>More Information?</u></span>
-              </Tooltip>
-           </div>
+          onChange={onChange}
+        >
+          <Select.Option value="Unlimited">Unlimited</Select.Option>
+          <Select.Option value="1day">1day</Select.Option>
+          <Select.Option value="2days">2days</Select.Option>
+          <Select.Option value="3days">3days</Select.Option>
+          <Select.Option value="4days">4days</Select.Option>
+          <Select.Option value="5days">5days</Select.Option>
+          <Select.Option value="6days">6days</Select.Option>
+          <Select.Option value="1week">1week</Select.Option>
+          <Select.Option value="2weeks">2weeks</Select.Option>
+          <Select.Option value="3weeks">3weeks</Select.Option>
+          <Select.Option value="1month">1month</Select.Option>
+          <Select.Option value="2months">2months</Select.Option>
+          <Select.Option value="3months">3months</Select.Option>
+          <Select.Option value="6months">6months</Select.Option>
+          <Select.Option value="9months">9months</Select.Option>
+          <Select.Option value="1year">1year</Select.Option>
+         </Select>
        </Form.Item>
   )
 }
@@ -66,7 +79,8 @@ function CollapseDropDown() {
    
     <div id="collapse">
        <Collapse style={{background:'white'}} bordered={false} >
-    <Panel header="Poll Setting">
+    <Panel header="Poll Setting"
+    forceRender="true">
       {text}
       <PollDuration/>
     </Panel>

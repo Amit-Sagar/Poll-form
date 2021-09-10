@@ -1,12 +1,11 @@
 import React from 'react';
-import Modal from './Modal';
-import './App.css';
+import CollectionsPage from './Modal';
 import 'antd/dist/antd.css';
 
 function App() {
   return (
     <div>
-          <Modal/>
+        <CollectionsPage/>
     </div>
   );
 }

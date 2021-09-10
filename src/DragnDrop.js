@@ -4,18 +4,6 @@ import {Button} from 'antd';
 import 'antd/dist/antd.css';
 import './App.css';
 import { DeleteOutlined} from '@ant-design/icons';
-import axios from 'axios';
-
-
-          axios.post('https://dev.techtud.oslabs.app/api/v1.1/create_poll')
-            .then(function (response) {
-              console.log(response);
-            })
-            .catch(function (error) {
-              console.log(error);
-            })
-            .then(function () {
-            });
 
 
 
@@ -51,27 +39,7 @@ const queryAttr = "data-rbd-drag-handle-draggable-id";
 
 const DragnDrop = (props) => {
 	const [placeholderProps, setPlaceholderProps] = useState({});
-	const [items, setItems] = useState(getItems(2));
-  const [formValues, setFormValues] = useState([{ morechoices: ""}])
- 
-  let handleChange = (i, e) => {
-      let newFormValues = [...formValues];
-      newFormValues[i][e.target.name] = e.target.value;
-      setFormValues(newFormValues);
-    }
-  
-  let addFormFields = () => {
-      setFormValues([...formValues, { morechoices: "" }])
-    }
-    let removeFormFields = (i) => {
-      let newFormValues = [...formValues];
-      newFormValues.splice(i, 1);
-      setFormValues(newFormValues)
-  }
-  let handleSubmit = (event) => {
-      event.preventDefault();
-      alert(JSON.stringify(formValues));
-  };
+	const [items, setItems] = useState(getItems()); 
    
 
 	const onDragEnd = result => {
@@ -115,11 +83,6 @@ const DragnDrop = (props) => {
 	};
 
 	return (
-    <div>
-              <form  onSubmit={handleSubmit}>
-           {formValues.map((element, index) => (
-                      
-                 <div className="form-inline" key={index}>
 		<DragDropContext onDragEnd={onDragEnd} onDragUpdate={onDragUpdate}>
 			<Droppable droppableId="droppable">
 				{(provided, snapshot) => (
@@ -141,15 +104,7 @@ const DragnDrop = (props) => {
 										)}
 									>
 										{item.content}
-                    <input className="ant-input input-box" type="text" name="morechoices" value={element.morechoices || ""} onChange={e => handleChange(index, e)} />
-                    
-                    <div>
-                {
-                  index ? 
-                    <button type="button"  className="remove" onClick={() => removeFormFields(index)}><span className="button-name"><DeleteOutlined style={{padding:'2px 2px 2px 2px'}} /></span></button> 
-                  : null
-                }
-              </div>
+
 									</div>
 								)}
 							</Draggable>
@@ -168,15 +123,7 @@ const DragnDrop = (props) => {
 			</Droppable>
 		</DragDropContext>
 
-              </div>
-              ))}
-          
-          <div className="button-section">
-              <Button className="button add" type="primary" onClick={() => addFormFields()}>More Choices</Button>
-             
-          </div>
-      </form>
-    </div>
+              
 	);
 };
 export default DragnDrop;
